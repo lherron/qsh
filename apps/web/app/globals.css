@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --ink: #11100e;
+  --paper: #e7e2d8;
+  --paper-muted: #a9a397;
+  --rule: rgba(231, 226, 216, 0.12);
+  --signal: #ffcb45;
+}
+
+@theme inline {
+  --color-background: var(--ink);
+  --color-foreground: var(--paper);
+  --color-muted: var(--paper-muted);
+  --color-signal: var(--signal);
+  --font-body: var(--font-ibm-plex), system-ui, sans-serif;
+  --font-mono: var(--font-space-mono), monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-ibm-plex), system-ui, sans-serif;
+}
+
+.hero {
+  position: relative;
+  display: grid;
+  min-height: 100svh;
+  place-content: center;
+  overflow: hidden;
+  padding: 2rem;
+  isolation: isolate;
+}
+
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px);
+  background-size: 5.5rem 5.5rem;
+  mask-image: radial-gradient(circle at center, black 0%, transparent 68%);
+}
+
+.domain {
+  margin: 0 0 1.5rem;
+  color: var(--paper-muted);
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+h1 {
+  display: flex;
+  margin: 0;
+  flex-direction: column;
+  font-size: clamp(4.5rem, 16vw, 13rem);
+  font-weight: 500;
+  letter-spacing: -0.085em;
+  line-height: 0.73;
+}
+
+.command {
+  margin-left: 0.33em;
+  color: var(--signal);
+  font-family: var(--font-space-mono), monospace;
+  font-size: 0.58em;
+  font-weight: 700;
+  letter-spacing: -0.065em;
+  line-height: 1.2;
+}
+
+.command span {
+  display: inline-block;
+  font-weight: 400;
+  transform: translateY(-0.02em);
+}
+
+.cursor {
+  width: clamp(2.5rem, 6vw, 5rem);
+  height: 0.55rem;
+  margin-top: 2.25rem;
+  margin-left: auto;
+  background: var(--paper);
+  animation: blink 1.1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 32rem) {
+  .hero {
+    place-content: center start;
+    padding: 1.5rem;
+  }
+
+  .hero-grid {
+    background-size: 3.5rem 3.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+}
