@@ -31,10 +31,6 @@ const FIRST_FIVE = [
  * the hook, is a real sequence, so the numerals carry information rather than
  * decorating it (DESIGN.md § 6 / install). The numeral hangs in its own
  * column so the step content keeps one left edge.
- *
- * Spacing is padding and flex gaps, not `mt-*`: globals.css zeroes `p`/`h3`
- * margins in an unlayered rule that outranks Tailwind's layered utilities.
- * Reported to mable on T-08038.
  */
 function Step({
   n,
@@ -98,9 +94,9 @@ export function Install() {
           <div className="max-w-xl border border-rule bg-ink-2">
             <div className="flex items-center gap-4 px-4 py-3">
               <pre
-                className={`terminal-body m-0 min-w-0 flex-1 overflow-x-auto font-mono! ${TERM_SCROLL}`}
+                className={`terminal-body m-0 min-w-0 flex-1 overflow-x-auto ${TERM_SCROLL}`}
               >
-                <code className="font-mono! whitespace-pre text-paper">
+                <code className="whitespace-pre text-paper">
                   {HOOK}
                 </code>
               </pre>
@@ -141,7 +137,7 @@ export function Install() {
                 key={row.command}
                 className="border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3"
               >
-                <td className="terminal-body py-3.5 pr-10 font-mono! whitespace-nowrap text-paper">
+                <td className="terminal-body py-3.5 pr-10 font-mono whitespace-nowrap text-paper">
                   {row.command}
                 </td>
                 <td className="w-full py-3.5 text-sm whitespace-nowrap text-paper-muted">

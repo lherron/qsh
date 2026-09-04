@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 
 /**
- * The `/ why` columns are ~260px of usable width, so most proving commands are
+ * The `/ why` columns are ~200px of usable width, so most proving commands are
  * longer than their pane. DESIGN.md § 9 allows a terminal its own overflow-x,
  * but a line that is silently cut reads as a bug, so these panes keep a
  * permanently visible 6px scrollbar: --paper-faint thumb on an --ink-3 track.
@@ -26,19 +26,10 @@ export function TermScrollStyle() {
   );
 }
 
-/**
- * `font-mono` is spelled out on every terminal element below. globals.css sets
- * `code, pre { font-family: var(--font-mono) }`, but `--font-mono` is declared
- * in an `@theme inline` block, which resolves on `:root` while next/font's
- * `--font-jetbrains-mono` is declared on `<body>` — so the raw `var()` is
- * invalid and those elements fall back to the system sans. The Tailwind
- * utility inlines the value at the element and does resolve. Reported to
- * mable on T-08038; drop these once globals.css is fixed.
- */
 export function TermBody({ children }: { children: ReactNode }) {
   return (
-    <pre className="m-0 font-mono!">
-      <code className="font-mono!">{children}</code>
+    <pre className="m-0">
+      <code>{children}</code>
     </pre>
   );
 }
@@ -83,5 +74,5 @@ export function Dot({
 
 /** Inline command or identifier inside a body paragraph. 14px (DESIGN.md § 3). */
 export function Cmd({ children }: { children: ReactNode }) {
-  return <code className="font-mono! text-sm text-paper">{children}</code>;
+  return <code className="text-sm text-paper">{children}</code>;
 }

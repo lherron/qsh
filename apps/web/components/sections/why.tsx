@@ -17,10 +17,6 @@ import { cn } from "@/lib/utils";
  *   ls                     content/help/wrkq-ls.txt
  *   set --state --if-match content/help/wrkq-set.txt
  *   claim --as             content/help/wrkq-claim.txt (--as is a global flag)
- *
- * Spacing uses padding, not margin: globals.css zeroes `p`/`h3` margins in an
- * unlayered rule, which outranks Tailwind's layered `mt-*` utilities. Reported
- * to mable on T-08038.
  */
 const CLAIMS: { label: string; body: ReactNode; proof: ReactNode }[] = [
   {

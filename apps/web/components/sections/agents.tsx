@@ -64,7 +64,6 @@ export function Agents() {
             run the next one. wrkq was designed from that side of the screen.
           </p>
 
-          {/* Padding, not margin: globals.css zeroes dl/dd margins unlayered. */}
           <dl className="pt-10">
             {CLAIMS.map((claim) => (
               <div
@@ -75,9 +74,9 @@ export function Agents() {
                 <dd className="max-w-[62ch] text-paper-muted">{claim.body}</dd>
                 <dd className="border border-rule bg-ink-2 px-4 py-2.5">
                   <pre
-                    className={`terminal-body m-0 overflow-x-auto font-mono! ${TERM_SCROLL}`}
+                    className={`terminal-body m-0 overflow-x-auto ${TERM_SCROLL}`}
                   >
-                    <code className="font-mono! whitespace-pre">
+                    <code className="whitespace-pre">
                       <span className="text-paper-faint select-none">$ </span>
                       <span className="text-paper">{claim.command}</span>
                     </code>
@@ -93,8 +92,8 @@ export function Agents() {
             title="wrkq info"
             bodyClassName={`max-h-[34rem] overflow-y-auto ${TERM_SCROLL}`}
           >
-            <pre className="m-0 font-mono!">
-              <code className="font-mono! whitespace-pre text-paper-muted">
+            <pre className="m-0">
+              <code className="whitespace-pre text-paper-muted">
                 {WRKQ_INFO}
               </code>
             </pre>
