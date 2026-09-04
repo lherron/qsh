@@ -1,15 +1,29 @@
+import { Agents } from "@/components/sections/agents";
+import { Commands } from "@/components/sections/commands";
+import { Faq } from "@/components/sections/faq";
+import { Hero } from "@/components/sections/hero";
+import { Install } from "@/components/sections/install";
+import { Model } from "@/components/sections/model";
+import { Why } from "@/components/sections/why";
+import { Footer } from "@/components/site/footer";
+import { Nav } from "@/components/site/nav";
+import { SectionTracker } from "@/components/site/section-tracker";
+
 export default function Home() {
   return (
-    <main className="hero">
-      <div className="hero-grid" aria-hidden="true" />
-      <p className="domain">wrkq.sh</p>
-      <h1>
-        <span>Hello</span>
-        <span className="command">
-          <span aria-hidden="true">›</span> wrkq
-        </span>
-      </h1>
-      <div className="cursor" aria-hidden="true" />
-    </main>
+    <>
+      <Nav />
+      <main>
+        <Hero />
+        <Why />
+        <Install />
+        <Agents />
+        <Commands />
+        <Model />
+        <Faq />
+      </main>
+      <Footer />
+      <SectionTracker />
+    </>
   );
 }
