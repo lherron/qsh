@@ -166,7 +166,8 @@ flags that are not there.
 Left: `wrkq` wordmark in Bricolage 600 at 1.125rem, followed by `.sh` in
 `--paper-faint`. Right, mono 0.8125rem: `commands` (→ `/commands`), `docs`
 (→ github README until docs exist), `github ↗` (→ repo, with the star count
-fetched at build time; render nothing if the fetch fails), and a version chip
+fetched at build time; render no count if the fetch fails or the count is
+below 10, a `0` next to the link says nothing useful), and a version chip
 from `content/help/version.txt` (`v0.1.0` – strip the `-N-gHASH` suffix).
 Sticky; gains an `--ink-2` background at 92% opacity with `backdrop-filter`
 once the page scrolls past 24px.
@@ -208,8 +209,15 @@ kept as-is.
 
 Heading: **Three things it gets right.**
 
-Three columns (stack below 768px). Each column: a mono label, a body
-paragraph, and a small terminal showing the proving command and its output.
+Three columns (stack below 768px), each a mono label and a body paragraph.
+Beneath the three columns, one full-width terminal that shows all three
+proving exchanges as a single session, in column order, separated by a blank
+line; each exchange begins with a faint `# verbs` / `# one file` / `# names`
+comment line in `--paper-faint` so the eye can pair it with its column. The
+terminal is one component, not three. (Ruled after T-08038: at 1440 a
+three-column terminal gets ~25 characters and two of the three commands were
+cut off. The session form gives the commands the full measure and reads like
+a real shell.)
 
 **Verbs you already know.**
 "Tasks and projects are paths. `ls` lists them, `cat` shows one, `touch` makes
@@ -227,8 +235,10 @@ checks make concurrent agents safe. No accounts, no sync, nothing to run.
 Export the state and it goes through your PR like any other change."
 ```
 $ wrkq set T-00042 --state in_progress --if-match 7
-error: etag mismatch (current 8)
+Error: task etag precondition failed
 ```
+(That is the binary's real stderr line, reproduced by T-08038; render it in
+`--blocked`.)
 
 **Every write has a name on it.**
 "Each mutation records a principal: `agent:cody`, `agent:mable`, you. Comments,
@@ -269,7 +279,9 @@ wrkq info 2>/dev/null || echo "wrkq not installed; ask the user"
 "`wrkq info` prints the task lifecycle rules and the command reference an
 agent needs. Nothing else to configure."
 
-Then **First five commands**, a compact table (mono):
+Then **First five commands**, a compact table (mono). Below 768px the table
+renders as stacked rows: the command on one line, its description beneath in
+`--paper-muted`; the description must never be off-screen.
 ```
 wrkq touch inbox/login-flow -t "Login flow"    create a task
 wrkq set T-00001 --state in_progress            start it
@@ -288,7 +300,8 @@ one. wrkq was designed from that side of the screen."
 
 Three short claims with a command each:
 - **Structured output on every command.** `--json`, `--ndjson`, `--porcelain`,
-  `--yaml`, `--tsv`. `wrkq cat T-00042 --json --one` returns one object, not an
+  and `--output yaml` or `--output tsv` (the global `--output` flag; `--yaml`
+  and `--tsv` are not global flags). `wrkq cat T-00042 --json --one` returns one object, not an
   array, when that is what the caller asserted.
 - **Wait, don't poll.** `wrkq monitor wait T-00042 --until state=completed
   --timeout 30m` blocks until the condition is true and exits 0. Exit 1 means
