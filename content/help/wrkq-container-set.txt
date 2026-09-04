@@ -1,0 +1,34 @@
+Update container configuration fields.
+
+A webhook subscription is either a bare URL (receives every event family) or a
+URL narrowed to one or more event classes: task, workflow, container — or an
+exact event name. --webhook-events narrows every URL passed with --webhook-url /
+--add-webhook-url in the same invocation; --webhook-urls takes the stored JSON
+form directly and may mix bare and narrowed entries.
+
+Examples:
+  wrkq container set inbox --webhook-urls '["http://localhost/hook/{ticket_id}"]'
+  wrkq container set inbox --webhook-urls '[{"url":"http://localhost/hook","events":["container"]}]'
+  wrkq container set P-00001 --webhook-url http://localhost/hook/{ticket_id}
+  wrkq container set inbox --webhook-url http://localhost/hook --webhook-events container
+  wrkq container set inbox --add-webhook-url http://localhost/hook2
+  wrkq container set inbox --add-webhook-url http://localhost/hook2 --webhook-events task,workflow
+  wrkq container set inbox --remove-webhook-url http://localhost/old-hook
+  wrkq container set --all --remove-webhook-url http://localhost/old-hook
+Usage:
+  wrkq container set <container> [flags]
+Flags:
+      --add-webhook-url stringArray      Add webhook URL to existing list (repeatable)
+      --all                              Apply to all containers
+  -h, --help                             help for set
+      --if-match int                     Conditional update (etag)
+      --remove-webhook-url stringArray   Remove webhook URL from existing list, matched by URL (repeatable)
+      --webhook-events strings           Narrow --webhook-url/--add-webhook-url to these event classes (task, workflow, container) or exact event names
+      --webhook-url stringArray          Webhook URL (repeatable)
+      --webhook-urls string              Webhook subscriptions JSON array; entries are "url" or {"url":...,"events":[...]}
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

@@ -1,0 +1,35 @@
+Stream typed NDJSON events for watched tasks. Emits per-event lines and
+exactly one terminal line before exit. With no --until, follows until --timeout
+or --stall-after expires, if either is given, and otherwise indefinitely.
+
+The feed starts at the current high-water mark: it tails what happens NEXT. Use
+--since <id> to start from an earlier event (--since 0 replays the whole log) or
+--last N to replay the last N events before following.
+
+Selectors: T-XXXXX friendly IDs or container paths (e.g. inbox/my-task), plus
+R-XXXXX rooms and EN-XXXXX envelopes. A task selector also carries that task's
+room, so state changes and the conversation stream on ONE selector; --state-only
+still emits only task lifecycle changes. An EN- selector that is a fan-out group
+head covers every envelope of that group.
+Invalid selectors fail with exit code 2 before any streaming.
+Usage:
+  wrkq monitor watch [TASK...] [flags]
+Flags:
+      --event-type string    Comma-separated event_type filter
+      --format string        Output format: ndjson or compact
+  -h, --help                 help for watch
+      --last int             Replay last N events before following
+      --ndjson               Output as NDJSON
+      --raw                  Raw wrkq watch behavior (whole-log unfiltered tail)
+      --scope string         Filter by scope ref
+      --since int            Start from event ID (overrides high-water default)
+      --stall-after string   Exit after this duration with no new events; applies with or without --until
+      --state-only           Only emit lifecycle state-change events
+      --timeout string       Maximum follow duration (e.g. 30m); bounds the follow with or without --until
+      --until string         Condition: state=<s>[,<s>...], all-terminal, acked, or terminal
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

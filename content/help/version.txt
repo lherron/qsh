@@ -1,0 +1,93 @@
+{
+  "build_date": "2026-09-03T18:24:07Z",
+  "capabilities": {
+    "actor_attribution": true,
+    "attachments": true,
+    "bulk_operations": true,
+    "etag_concurrency": true,
+    "event_log": true,
+    "glob_patterns": true,
+    "pagination": true,
+    "stdin_input": true,
+    "three_way_merge": true
+  },
+  "commit": "7854f29",
+  "machine_interface_version": 1,
+  "supported_commands": [
+    "init",
+    "whoami",
+    "actors",
+    "actor",
+    "mkdir",
+    "touch",
+    "ls",
+    "tree",
+    "stat",
+    "ids",
+    "resolve",
+    "cat",
+    "set",
+    "mv",
+    "rm",
+    "restore",
+    "campaign",
+    "timeline",
+    "version",
+    "completion",
+    "config",
+    "edit",
+    "apply",
+    "log",
+    "watch",
+    "diff",
+    "find",
+    "attach",
+    "cp",
+    "doctor"
+  ],
+  "supported_flags": {
+    "bulk": [
+      "--jobs",
+      "--batch-size"
+    ],
+    "filtering": [
+      "--state",
+      "--priority",
+      "--label",
+      "--labels",
+      "--since",
+      "--until"
+    ],
+    "operations": [
+      "--dry-run",
+      "--yes",
+      "--if-match",
+      "--continue-on-error"
+    ],
+    "output": [
+      "--json",
+      "--ndjson",
+      "--yaml",
+      "--tsv",
+      "--porcelain",
+      "-1",
+      "-0"
+    ],
+    "pagination": [
+      "--limit",
+      "--cursor"
+    ],
+    "sorting": [
+      "--sort"
+    ]
+  },
+  "supported_formats": [
+    "json",
+    "ndjson",
+    "yaml",
+    "tsv",
+    "table",
+    "porcelain"
+  ],
+  "version": "v0.1.0-272-g7854f29"
+}

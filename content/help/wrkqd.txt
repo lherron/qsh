@@ -1,0 +1,15 @@
+Usage of wrkqd:
+  -addr string
+    	Listen address (default 127.0.0.1:7171)
+  -db string
+    	Database path override (defaults to config)
+  -node-tokens string
+    	Per-node bearer tokens (nodeId=token,nodeId=token); supersedes --token
+  -node-tokens-file string
+    	File of per-node bearer tokens, one nodeId=token per line
+  -token string
+    	Shared token for local auth
+  -unix string
+    	Listen on unix socket path
+  -unsafe-no-token
+    	Allow non-loopback listen without a token (dev only)

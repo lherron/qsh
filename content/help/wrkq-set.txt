@@ -1,0 +1,40 @@
+Update task fields; outcome is curated, comments are raw, and completion never requires outcome
+Usage:
+  wrkq set <path|id>... [flags]
+Aliases:
+  set, edit
+Flags:
+      --assigned-project string   Update assignee project ID
+      --assignee string           Update task assignee
+      --campaign string           Enroll in a draft or active campaign by ID or path; the task keeps its own project (empty string unenrolls)
+      --caused-by string          Replace causal lineage with comma-separated task IDs (empty string clears; omit to leave unchanged)
+      --continue-on-error         Continue processing on errors
+  -d, --description string        Update task description
+      --dry-run                   Show what would be changed without applying
+      --due-at string             Update task due date
+  -h, --help                      help for set
+      --if-match int              Only update if etag matches
+  -j, --jobs int                  Number of parallel workers (0 = auto-detect CPU count) (default 1)
+      --kind string               Update task kind
+      --labels string             Update labels (comma shorthand unless starting '[' for JSON array; empty/[] clears; JSON allows commas)
+      --meta string               Update task metadata (JSON object or null)
+      --meta-file string          Load task metadata from file
+      --ordered                   Preserve input order (disables parallelism)
+      --outcome string            Set curated task outcome (use @file or - for stdin; blank clears)
+      --parent-id string          Alias for --parent-task
+      --parent-task string        Set parent task ID or path
+      --priority int              Update task priority (1-4)
+      --requested-by string       Update requester project ID
+      --resolution string         Update task resolution
+      --root string               Set a top-level project's checkout root (stored as ~/... when under $HOME; empty clears; consumers expand it)
+      --slug string               Update task slug
+      --specification string      Update task specification
+      --start-at string           Update task start date
+      --state string              Update task state
+      --title string              Update task title
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

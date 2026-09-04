@@ -1,0 +1,37 @@
+Search for tasks and containers
+Usage:
+  wrkq find [PATH...] [flags]
+Flags:
+      --ack-pending               Filter for ack-pending tasks (completed/cancelled, not yet acknowledged)
+      --assigned-project string   Filter by assignee project ID
+      --assignee string           Filter by assignee principal ref or bare agent slug
+      --campaign string           Find resident and enrolled members of a campaign
+      --caused-by string          Filter tasks whose caused_by lineage includes this task ID (e.g. T-00012)
+      --claimed-by string         Filter by claim holder principal ref
+      --claimed-node string       Filter by server-derived claim node
+      --cursor string             Pagination cursor
+      --due-after string          Filter tasks due after date (YYYY-MM-DD)
+      --due-before string         Filter tasks due before date (YYYY-MM-DD)
+      --has-outcome               Filter for tasks with a curated outcome
+  -h, --help                      help for find
+      --json                      Output as JSON
+      --kind string               Filter by task kind: task, subtask, spike, bug, chore
+      --label stringArray         Filter by exact task label (repeatable; all must match)
+      --limit int                 Limit number of results
+      --ndjson                    Output as newline-delimited JSON
+      --parent-task string        Filter subtasks of a specific parent task (ID or path)
+      --porcelain                 Stable machine-readable output
+      --pretty                    Force human-readable table output even when not a TTY
+  -0, --print0                    NUL-separated output
+      --requested-by string       Filter by requester project ID
+      --reverse                   Reverse sort order
+      --slug-glob string          Filter by slug glob pattern (e.g. 'login-*')
+      --sort string               Sort by field: updated_at, created_at, id, path
+      --state string              Filter by state (or 'all' for everything)
+      --type string               Filter by type: t (task), p (project/container)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

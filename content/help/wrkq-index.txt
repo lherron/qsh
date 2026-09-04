@@ -1,0 +1,19 @@
+Inspect and rebuild the local search index
+Usage:
+  wrkq index [flags]
+Commands:
+  pause       Pause background search indexing
+  rebuild     Rebuild the local search index
+  resume      Resume background search indexing
+  status      Show local search index status
+  update      Index pending canonical changes
+  vacuum      Vacuum the local search index
+
+Flags:
+  -h, --help   help for index
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

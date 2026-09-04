@@ -1,0 +1,28 @@
+wrkqadm is the administrative companion to wrkq. It handles database
+lifecycle (init, snapshot), actor management, merge, patches, and health checks.
+These operations should not be exposed to agents.
+
+Usage:
+  wrkqadm [command]
+
+Available Commands:
+  attach      Administrative attachment operations
+  completion  Generate the autocompletion script for the specified shell
+  config      Configuration management and introspection
+  db          Database lifecycle operations
+  doctor      Check database health and configuration
+  help        Help about any command
+  init        Initialize the wrkq database and configuration
+  merge       Merge a project database into a canonical database (disabled)
+  migrate     Run any pending database migrations
+  patch       Manage RFC 6902 JSON patches
+  state       Manage canonical state snapshots
+  version     Print version information
+
+Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+  -h, --help                   help for wrkqadm
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+
+Use "wrkqadm [command] --help" for more information about a command.

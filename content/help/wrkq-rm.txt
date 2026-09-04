@@ -1,0 +1,27 @@
+Archives (soft delete) or permanently deletes tasks and containers.
+
+By default, performs soft delete (sets archived_at). Use --purge for hard delete.
+Container purge only removes empty containers; use rmdir --force for recursive deletion.
+
+WARNING: --purge permanently deletes tasks and attachments. This CANNOT be undone!
+Usage:
+  wrkq rm <path|id>... [flags]
+Flags:
+      --continue-on-error   Continue on errors
+      --dry-run             Show what would be removed
+  -f, --force               Force removal
+  -h, --help                help for rm
+  -j, --jobs int            Parallel workers (default 1)
+      --json                Output JSON
+      --ndjson              Output NDJSON
+      --nullglob            Zero matches is not an error
+      --porcelain           Machine-readable output
+      --purge               Permanently delete (CANNOT BE UNDONE)
+  -r, --recursive           Remove containers recursively
+      --yes                 Skip confirmation prompts
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

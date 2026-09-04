@@ -1,0 +1,38 @@
+Workflow engine CLI for wrkq tasks
+
+Usage:
+  wrkf [command]
+
+Available Commands:
+  action      Low-ceremony task lifecycle actions over wrkf runs
+  check       Run workflow checks
+  completion  Generate the autocompletion script for the specified shell
+  effect      Inspect and operate workflow effects
+  evidence    Add and inspect workflow evidence
+  help        Help about any command
+  hook        Inspect and debug local hook catalog
+  instance    Inspect and terminalize workflow instances
+  ledger      Append and project immutable workflow ledger entries
+  next        
+  obligation  Inspect and resolve workflow obligations
+  rpc         Serve wrkf JSON-RPC over stdio
+  run         Bind principals to workflow runs
+  supervisor  Operate recovery and escalation role
+  suspension  Resolve an instance's active suspension
+  task        Attach and inspect workflow instances on tasks
+  transition  
+  version     Print version information
+  watch       Wait for durable workflow lifecycle state
+  workflow    Validate, install, and inspect workflow templates
+
+Flags:
+      --db string              Path to wrkq database file
+  -h, --help                   help for wrkf
+      --hook-catalog string    Path to wrkf hook catalog JSON (defaults to WRKF_HOOK_CATALOG; required in local mode)
+      --json                   Output JSON
+      --principal-ref string   Workflow caller principal ref (agent:<id>)
+      --role string            Workflow role
+      --task string            Default task
+      --verbose                Verbose output
+
+Use "wrkf [command] --help" for more information about a command.

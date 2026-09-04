@@ -1,0 +1,22 @@
+Manage future-attention promises
+Usage:
+  wrkq promise [flags]
+Commands:
+  abandon     Deliberately abandon a promise after review
+  add         Record a promise to revisit a subject
+  attach      Attach a promise to a task or container
+  detach      Detach a promise while preserving its subject snapshot
+  edit        Edit an open promise
+  list        List promises
+  ready       List promises ready for review
+  renew       Record a review and choose the next review time
+  resolve     Resolve a promise after review
+
+Flags:
+  -h, --help   help for promise
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

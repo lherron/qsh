@@ -1,0 +1,20 @@
+Stream change events from the event log in real-time.
+
+Examples:
+  wrkq watch                     # Watch all events
+  wrkq watch --since 100         # Watch from event ID 100
+  wrkq watch --ndjson            # Output as NDJSON
+  wrkq watch portal/**           # Watch events under portal (future)
+Usage:
+  wrkq watch [PATH...] [flags]
+Flags:
+  -f, --follow      Follow new events (default true) (default true)
+  -h, --help        help for watch
+      --ndjson      Output as newline-delimited JSON
+      --since int   Start from event ID (0 = all events)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

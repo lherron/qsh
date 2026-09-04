@@ -1,0 +1,17 @@
+Detach a promise while preserving its subject snapshot
+Usage:
+  wrkq promise detach <promise> [flags]
+Flags:
+      --etag int       Alias for --if-match
+  -h, --help           help for detach
+      --if-match int   Only mutate if the promise etag matches
+      --json           Output as JSON
+      --ndjson         Output as newline-delimited JSON
+      --porcelain      Stable machine-readable output
+      --pretty         Force human-readable output even when not a TTY
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

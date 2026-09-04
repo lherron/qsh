@@ -1,0 +1,16 @@
+Atomically claim a task for this session
+Usage:
+  wrkq claim <task> [flags]
+Flags:
+  -h, --help           help for claim
+      --json           Output JSON
+      --porcelain      Output compact machine-readable JSON
+      --scope string   Task-scoped sessionRef (defaults to the active runtime scope)
+      --take-over      Supersede the current holder and bump generation
+      --yes            Skip takeover confirmation
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

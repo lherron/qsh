@@ -1,0 +1,19 @@
+Search handoffs by title, body, scope, or status
+Usage:
+  wrkq handoff search <query> [flags]
+Flags:
+      --cursor string   Pagination cursor from a previous page
+  -h, --help            help for search
+      --human           Force human-readable output
+      --json            Force JSON output
+      --limit int       Maximum number of results (0 = server default)
+      --ndjson          Force NDJSON output
+      --porcelain       Emit next_cursor=<token> on stderr (mirrors 'wrkq handoff list --porcelain')
+      --scope string    Override scope (ScopeRef like agent:cody:project:wrkq or handle like cody@wrkq)
+      --status string   Status filter: pending, acknowledged, or all (default: pending) (default "pending")
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

@@ -1,0 +1,31 @@
+Run a chat turn against the predefined agent "seshat".
+
+This is a thin pass-through to 'hrcchat turn seshat'. The 'hrcchat' binary must
+be on PATH; wrkq does not depend on it at build time. Project context is
+resolved by hrcchat itself (ASP_PROJECT), exactly as for any other caller.
+
+The prompt is taken from positional args (joined), --file, or stdin ("-").
+All hrcchat output is streamed through unchanged.
+
+Common 'hrcchat turn' flags are surfaced directly (--new, --format, --follow,
+--file). Anything after "--" is forwarded verbatim, so any other hrcchat flag
+remains reachable without a wrkq change:
+
+  wrkq agent "summarize open risks"
+  wrkq agent --follow 30s "work the inbox"
+  echo "long prompt" | wrkq agent -
+  wrkq agent "do X" -- --stall-after 20m --reply-to msg_01J...
+Usage:
+  wrkq agent [prompt] [-- extra hrcchat-turn args] [flags]
+Flags:
+      --file string     Read prompt from file
+      --follow string   Emit bounded progress at the given interval (e.g. 30s)
+      --format string   Output format: tree, compact, ndjson, json
+  -h, --help            help for agent
+      --new             Clear context before dispatching (clean slate)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

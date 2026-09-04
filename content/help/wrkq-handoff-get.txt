@@ -1,0 +1,15 @@
+Get a single handoff by ID
+Usage:
+  wrkq handoff get <handoff-id> [flags]
+Aliases:
+  get, cat
+Flags:
+  -h, --help    help for get
+      --human   Force human-readable output
+      --json    Force JSON output
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

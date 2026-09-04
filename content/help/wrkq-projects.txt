@@ -1,0 +1,28 @@
+Lists all top-level projects (containers with no parent) in the database.
+
+This command always shows all projects regardless of WRKQ_PROJECT_ROOT,
+making it easy to see what projects exist when working in a scoped context.
+
+Examples:
+  wrkq projects              # List all projects in table format
+  wrkq projects --json       # Output as JSON
+  wrkq projects -1           # One project slug per line
+  wrkq projects -a           # Include archived projects
+Usage:
+  wrkq projects [flags]
+Flags:
+  -a, --all             Include archived projects
+      --cursor string   Pagination cursor from previous page
+  -h, --help            help for projects
+      --json            Output as JSON
+      --limit int       Maximum number of results to return (0 = no limit)
+      --ndjson          Output as newline-delimited JSON
+  -0, --nul             NUL-separated output
+  -1, --one             One entry per line
+      --porcelain       Machine-readable output
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

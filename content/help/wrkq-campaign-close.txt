@@ -1,0 +1,18 @@
+Declare campaign closure.
+
+Completed close requires every resident or enrolled member to be completed,
+cancelled, archived, deleted, moved, or unenrolled first. Completed members
+without outcomes are displayed but never block close. Cancelled close is a
+wholesale abandonment and leaves open members unchanged.
+Usage:
+  wrkq campaign close <container> [flags]
+Flags:
+  -h, --help           help for close
+      --if-match int   Only close if the container etag matches
+      --state string   Terminal campaign state: completed or cancelled
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

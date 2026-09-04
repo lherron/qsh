@@ -1,0 +1,18 @@
+Edit campaign content.
+
+The generic container.updated event snapshots BOTH complete bodies after every
+edit. Use a kind=decision container comment for curated amendment rationale.
+Usage:
+  wrkq campaign edit <container> [flags]
+Flags:
+  -d, --description string     Campaign brief (literal, @file, or - for stdin; empty clears)
+  -h, --help                   help for edit
+      --if-match int           Only edit if the container etag matches
+      --labels string          Campaign labels (comma shorthand unless starting '[' for JSON array; empty/[] clears; JSON allows commas)
+      --specification string   Campaign specification (literal, @file, or - for stdin; empty clears)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

@@ -1,0 +1,7 @@
+Help about any command
+Usage:
+  wrkq help [command] [flags]
+Commands:
+Flags:
+  -h, --help   help for help
+Use "wrkq help <command> --help" for command details.

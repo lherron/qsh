@@ -1,0 +1,23 @@
+Resolve the active agent scope from --scope, AGENT_SCOPE_REF,
+ASP_SCOPE_REF, ASP_HANDLE, or ASP_AGENT_ID + ASP_PROJECT and print the result.
+
+Useful for debugging agent runtime context. Works without a database
+connection — actor / container UUID lookups are best-effort extras.
+
+Exits 0 on success, 2 when no scope is resolvable.
+
+Output defaults to a human-readable table on a TTY and JSON when piped.
+Use --json or --human to force a mode.
+Usage:
+  wrkq agent-context [flags]
+Flags:
+  -h, --help           help for agent-context
+      --human          Force human-readable output
+      --json           Force JSON output
+      --scope string   Override scope (ScopeRef like agent:cody:project:wrkq or handle like cody@wrkq)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

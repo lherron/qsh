@@ -1,0 +1,24 @@
+Task management CLI
+Usage:
+  wrkq [flags]
+Commands:
+  ack                 agent               agent-context       agent-info
+  apply               attach              campaign            cat
+  check               check-inbox         claim               comment
+  completion          container           cp                  diff
+  find                handoff             help                index
+  log                 ls                  mkdir               monitor
+  mv                  projects            promise             relation
+  release             rename-container    restore             rm
+  rmdir               rpc                 search              server
+  set                 stat                timeline            touch
+  tree                usage               version             watch
+  webhook             whoami
+Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+  -h, --help                   help for wrkq
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)
+Use "wrkq <command> --help" for command details.

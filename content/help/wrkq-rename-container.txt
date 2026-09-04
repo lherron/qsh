@@ -1,0 +1,27 @@
+Rename a container by updating both its slug and title.
+
+By default, the title is set to match the new slug. Use --title to specify
+a custom title.
+
+Examples:
+  # Rename both slug and title to "new-project"
+  wrkq rename-container old-project new-project
+
+  # Rename with custom title
+  wrkq rename-container P-00001 new-project --title "New Project Name"
+
+  # Rename a top-level container in canonical DB
+  WRKQ_PROJECT_ROOT="" wrkq rename-container rex rex-control-plane
+Usage:
+  wrkq rename-container <path|id> <new-slug> [flags]
+Flags:
+      --dry-run        Show what would change without applying
+  -h, --help           help for rename-container
+      --if-match int   Only rename if etag matches
+      --title string   Custom title (defaults to new slug)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

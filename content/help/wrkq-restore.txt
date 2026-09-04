@@ -1,0 +1,23 @@
+Restores a deleted or archived task to active state.
+
+The task must be in 'deleted' or 'archived' state. By default, restores to 'open' state.
+Subtasks are cascade-restored when their parent is restored.
+Usage:
+  wrkq restore <path|id|uuid> [flags]
+Flags:
+      --assignee string      Update assignee on restore
+      --comment string       Add comment explaining restoration
+      --description string   Update description on restore
+  -h, --help                 help for restore
+      --if-match int         Conditional restore (etag)
+      --labels string        Update labels on restore (comma shorthand unless starting '[' for JSON array; empty/[] clears; JSON allows commas)
+      --priority int         Update priority on restore (1-4)
+      --state string         Restore to specific state (default: open)
+      --title string         Update title on restore
+      --to string            Restore to different container/slug (path)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

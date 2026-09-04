@@ -1,0 +1,26 @@
+Record a promise to revisit a subject
+Usage:
+  wrkq promise add [flags]
+Flags:
+      --campaign string    Alias for --container
+      --container string   Attach to a container
+      --for string         Owner principal (bare agent slug or agent:<id>)
+  -h, --help               help for add
+      --in string          Relative review duration resolved by the API (for example 7d or 36h)
+      --json               Output as JSON
+      --meta string        Metadata JSON object
+      --meta-file string   Read metadata JSON from a file or - for stdin
+      --ndjson             Output as newline-delimited JSON
+      --on-behalf          Assert the named owner requested this accepted promise
+      --porcelain          Stable machine-readable output
+      --pretty             Force human-readable output even when not a TTY
+      --question string    Review question (literal, @file, or - for stdin)
+      --review-at string   Absolute review timestamp (forwarded verbatim to the API)
+      --subject string     Subject snapshot (literal, @file, or - for stdin)
+      --task string        Attach to a task
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

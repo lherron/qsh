@@ -1,0 +1,26 @@
+Manage global webhook subscriptions.
+
+Global webhooks live on the internal root container and are inherited by every
+project, so a sink registered here fires for all projects without per-project
+duplication. Per-project or per-container webhooks are managed with
+'wrkq container set --webhook-url'.
+
+Examples:
+  wrkq webhook list
+  wrkq webhook add http://127.0.0.1:18451/api/webhooks/wrkq
+  wrkq webhook rm  http://127.0.0.1:18451/api/webhooks/wrkq
+Usage:
+  wrkq webhook [flags]
+Commands:
+  add         Add a global webhook URL
+  list        List global webhook URLs
+  rm          Remove a global webhook URL
+
+Flags:
+  -h, --help   help for webhook
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

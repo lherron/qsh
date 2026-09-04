@@ -1,0 +1,20 @@
+Display containers and tasks in a tree structure
+Usage:
+  wrkq tree [path...] [flags]
+Flags:
+  -a, --all             Include completed/archived/deleted tasks and empty containers
+      --fields string   Fields to display (comma-separated)
+  -h, --help            help for tree
+      --json            Output as JSON
+  -L, --level int       Maximum depth to display (0 = unlimited)
+      --ndjson          Output as newline-delimited JSON
+      --open            Show only open tasks
+      --porcelain       Machine-readable output
+      --pretty          Force human-readable tree output even when not a TTY
+      --state string    Promise leaf state: open (default) or all
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

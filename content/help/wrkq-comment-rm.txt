@@ -1,0 +1,15 @@
+Remove comment(s)
+Usage:
+  wrkq comment rm <comment-id|c:token>... [flags]
+Flags:
+      --dry-run        Preview without deleting
+  -h, --help           help for rm
+      --if-match int   Only delete if comment etag matches (0 = skip check)
+      --purge          Hard delete (remove from database)
+      --yes            Skip confirmation
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

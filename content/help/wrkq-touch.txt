@@ -1,0 +1,31 @@
+Create one or more tasks
+Usage:
+  wrkq touch <path>... [flags]
+Flags:
+      --assigned-project string   Assignee project ID
+      --assignee string           Assignee principal ref or bare agent slug
+      --campaign string           Enroll the new task in a draft or active campaign by ID or path (the task keeps its own project)
+      --caused-by string          Causal lineage: comma-separated task IDs whose work caused this defect/rework (e.g. T-00012,T-00034)
+  -d, --description string        Description for the task (use @file.md for file or - for stdin)
+      --due-at string             Initial task due date
+      --force-uuid string         Force specific UUID instead of auto-generating (must be valid UUIDv4)
+  -h, --help                      help for touch
+      --json                      Output as JSON
+      --kind string               Task kind: task, subtask, spike, bug, chore (default: task)
+      --labels string             Initial labels (comma shorthand unless starting '[' for JSON array; empty/[] clears; JSON allows commas)
+      --meta string               Initial task metadata (JSON object or null)
+      --meta-file string          Load task metadata from file (JSON object or null)
+      --parent-task string        Parent task ID or path (for subtasks)
+      --priority int              Initial task priority (1-4) (default 3)
+      --requested-by string       Requester project ID (return-to target)
+      --resolution string         Task resolution (done, wont_do, duplicate, needs_info)
+      --specification string      Specification for the task (use @file.md for file or - for stdin)
+      --start-at string           Initial task start date
+      --state string              Initial task state (idea, draft, open, in_progress, completed, blocked, cancelled, archived, deleted) (default "open")
+  -t, --title string              Title for the task (defaults to slug)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

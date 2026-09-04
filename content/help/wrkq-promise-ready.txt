@@ -1,0 +1,17 @@
+List promises ready for review
+Usage:
+  wrkq promise ready [flags]
+Flags:
+      --for string       Owner principal (bare agent slug or agent:<id>)
+  -h, --help             help for ready
+      --include-global   Include standalone owner-global promises
+      --json             Output as JSON
+      --ndjson           Output as newline-delimited JSON
+      --porcelain        Stable machine-readable output
+      --pretty           Force human-readable output even when not a TTY
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

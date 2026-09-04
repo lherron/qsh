@@ -1,0 +1,15 @@
+Update task description/specification from file or stdin
+Usage:
+  wrkq apply <PATHSPEC|ID> <FILE|-> [flags]
+Flags:
+      --dry-run         Show what would be changed without applying
+      --format string   Input format: md, yaml, json (auto-detected if not specified)
+  -h, --help            help for apply
+      --if-match int    Only apply if etag matches (0 = no check)
+      --with-metadata   Update metadata fields (title, state, priority, due_at) in addition to description/specification
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

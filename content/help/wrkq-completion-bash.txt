@@ -1,0 +1,8 @@
+Generate the autocompletion script for bash
+Usage:
+  wrkq completion bash
+Commands:
+Flags:
+  -h, --help              help for bash
+      --no-descriptions   disable completion descriptions
+Use "wrkq completion bash <command> --help" for command details.

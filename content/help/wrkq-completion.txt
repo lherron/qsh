@@ -1,0 +1,8 @@
+Generate the autocompletion script for the specified shell
+Usage:
+  wrkq completion [flags]
+Commands:
+  bash          fish          powershell    zsh
+Flags:
+  -h, --help   help for completion
+Use "wrkq completion <command> --help" for command details.

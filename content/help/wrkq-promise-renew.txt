@@ -1,0 +1,20 @@
+Record a review and choose the next review time
+Usage:
+  wrkq promise renew <promise> [flags]
+Flags:
+      --etag int           Alias for --if-match
+  -h, --help               help for renew
+      --if-match int       Only mutate if the promise etag matches
+      --in string          Relative review duration resolved by the API
+      --json               Output as JSON
+      --ndjson             Output as newline-delimited JSON
+      --note string        Review note (literal, @file, or - for stdin)
+      --porcelain          Stable machine-readable output
+      --pretty             Force human-readable output even when not a TTY
+      --review-at string   Absolute review timestamp (forwarded verbatim to the API)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

@@ -1,0 +1,19 @@
+Add a comment to a task or container.
+
+Comment text can be supplied with -m/--message or as a positional argument.
+Use '-' as the comment-text argument to read the body from stdin. If
+comment-text is omitted, the body is also read from stdin.
+Usage:
+  wrkq comment add <task-or-container> [comment-text] [flags]
+Flags:
+  -h, --help             help for add
+      --json             Output as JSON
+      --kind string      Judgment kind: blocker, decision, postmortem, or digest
+  -m, --message string   Comment text
+      --meta string      Comment metadata as a JSON object
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

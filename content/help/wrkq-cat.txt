@@ -1,0 +1,29 @@
+Print one or more tasks, containers, or promises.
+
+JSON output is always array-shaped for compatibility, even with one selector.
+Singleton automation should use --json --one, which asserts exactly one explicit
+selector and one resolved resource and emits that object without an array wrapper.
+Shell expansion still counts toward the explicit-selector cardinality.
+Usage:
+  wrkq cat <path|id>... [flags]
+Aliases:
+  cat, show
+Examples:
+  wrkq cat T-00001 --json
+  wrkq cat T-00001 T-00002 --json
+  wrkq cat T-00001 --json --one
+Flags:
+      --exclude-comments   Exclude comments from output
+  -h, --help               help for cat
+      --json               Output as JSON
+      --ndjson             Output as newline-delimited JSON
+      --no-frontmatter     Print body only without front matter
+      --one                Assert one selector/result and emit one bare JSON object (requires --json)
+      --porcelain          Machine-readable output
+      --pretty             Force the styled task card even when not a TTY
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

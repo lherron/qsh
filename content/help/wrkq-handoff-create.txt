@@ -1,0 +1,24 @@
+Create a new pending handoff for the resolved agent/project scope.
+
+Exactly one body source must be explicitly selected: --body or --body-file.
+Usage:
+  wrkq handoff create [flags]
+Flags:
+      --body string              Inline Markdown body (mutually exclusive with --body-file)
+      --body-file string         Path to a Markdown body file, or '-' for stdin (mutually exclusive with --body)
+      --dry-run                  Validate inputs and print the prospective handoff without writing it
+  -h, --help                     help for create
+      --human                    Force human-readable output
+      --idempotency-key string   Idempotency key to safely retry create without producing duplicates
+      --json                     Force JSON output
+      --meta string              Optional JSON object of additional metadata
+      --ndjson                   Force NDJSON output
+      --profile string           Named profile to resolve scope/defaults from
+      --scope string             Override scope (ScopeRef like agent:cody:project:wrkq or handle like cody@wrkq)
+  -t, --title string             Handoff title (required)
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

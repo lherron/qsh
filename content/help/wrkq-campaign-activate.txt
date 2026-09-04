@@ -1,0 +1,12 @@
+Activate a draft campaign
+Usage:
+  wrkq campaign activate <container> [flags]
+Flags:
+  -h, --help           help for activate
+      --if-match int   Only activate if the campaign etag matches
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)

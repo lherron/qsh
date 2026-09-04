@@ -1,0 +1,26 @@
+Acknowledge a handoff so it no longer appears in default pending listings.
+
+Acknowledgement is the only retirement mechanism - handoffs do not expire
+automatically. Acknowledged handoffs are retained for history and search.
+
+The actor is resolved from --as, agent runtime env, or, for an exact handoff ID,
+the handoff row's agent/project as a last-resort sparse-shell fallback.
+
+Use --note to attach a short acknowledgement note describing why the handoff
+was consumed or is obsolete. Use --dry-run to inspect the mutation before
+applying it.
+Usage:
+  wrkq handoff acknowledge <handoff-id> [flags]
+Flags:
+      --dry-run        Inspect the mutation without applying it
+  -h, --help           help for acknowledge
+      --human          Force human-readable output
+      --if-match int   Reject the acknowledgement when the current etag does not equal this value
+      --json           Force JSON output
+      --note string    Optional acknowledgement note describing why the handoff was consumed or is obsolete
+Global Flags:
+      --as string              Alias for --principal-ref; accepts agent:<id> or a full agent ScopeRef
+      --db string              Path to database file (overrides WRKQ_DB_PATH)
+      --output string          Output mode: table, human, json, ndjson, porcelain, yaml, tsv, raw
+      --principal-ref string   Caller principal for write attribution: agent:<id> or full agent ScopeRef
+      --project string         Project to operate under (overrides WRKQ_PROJECT_ROOT)
