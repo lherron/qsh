@@ -44,6 +44,16 @@
   --text-hero: clamp(3.25rem, 7.4vw, 6.5rem);
 }
 
+/* Font aliases live in a plain @theme (not inline) so they are emitted as real
+   custom properties on :root for the hand-written var(--font-*) rules below,
+   while still generating the font-* utilities. The next/font variables they
+   reference are set on <html> in layout.tsx so they resolve at :root. */
+@theme {
+  --font-display: var(--font-bricolage), "Helvetica Neue", system-ui, sans-serif;
+  --font-body: var(--font-plex-sans), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
 @theme inline {
   --color-ink: var(--ink);
   --color-ink-2: var(--ink-2);
@@ -56,10 +66,6 @@
   --color-signal: var(--signal);
   --color-done: var(--done);
   --color-blocked: var(--blocked);
-
-  --font-display: var(--font-bricolage), "Helvetica Neue", system-ui, sans-serif;
-  --font-body: var(--font-plex-sans), system-ui, sans-serif;
-  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
 
   /* 4px grid */
   --spacing: 0.25rem;

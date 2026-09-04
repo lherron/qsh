@@ -40,12 +40,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
-      <body
-        className={`${bricolage.variable} ${plexSans.variable} ${jetbrainsMono.variable}`}
-      >
-        {children}
-      </body>
+    <html
+      lang="en"
+      className={`dark ${bricolage.variable} ${plexSans.variable} ${jetbrainsMono.variable}`}
+    >
+      <body>{children}</body>
     </html>
   );
 }
