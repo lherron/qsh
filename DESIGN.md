@@ -70,7 +70,7 @@ Loaded through `next/font/google`, `display: swap`, subsets `latin`.
 | Mono | **JetBrains Mono** | 400/500/700. `font-variant-ligatures: none`. All terminal output, commands, IDs, eyebrows, nav, table data. 13.5px in terminals, 14px in prose code. |
 
 Type scale (rem): 0.75 / 0.8125 / 0.875 / 1 / 1.125 / 1.375 / 1.75 / 2.25 /
-3 / `clamp(3.25rem, 9vw, 7.5rem)` for the hero.
+3 / `clamp(3.25rem, 7.4vw, 6.5rem)` for the hero (the 7.5rem cap overflowed the two-line H1 at 1440; amended after T-08036).
 
 ### Space and shape
 
@@ -197,6 +197,10 @@ Install block: tabs `brew` / `curl` / `go`, each a real one-line command
 
 Right column: the ledger replay (§ 5).
 
+Layout note (amended after T-08036): the eyebrow and H1 span the full
+content width; the 7/5 split governs only the row beneath them (sub, install
+tabs and secondary link on the left, the replay `aside` on the right).
+
 Background: the existing hero grid (5.5rem cells, `--rule`, radial mask),
 kept as-is.
 
@@ -245,8 +249,8 @@ Install tabs (same component as the hero, larger):
 - go: `git clone https://github.com/lherron/wrkq && cd wrkq && just install`
 
 Verify each against `~/praesidium/wrkq/README.md` and `install.sh`; if the
-curl path is wrong, fix it here and in the hero. Requires Go 1.23+ for the
-source path; say so under that tab only.
+curl path is wrong, fix it here and in the hero. The source path requires Go 1.25 or newer (from wrkq's `go.mod`, which is
+the real gate; its README is stale); say so under that tab only.
 
 Then a two-step strip:
 
@@ -407,7 +411,9 @@ files; no hand-written command content.
 - Lighthouse performance ≥ 95 on the landing page in a production build.
 - Fonts self-hosted through `next/font`; no external stylesheet requests.
 - `pnpm typecheck && pnpm lint && pnpm build` clean.
-- Screenshots at 1440 and 390 attached to the task before it is marked done.
+- Screenshots at 1440 and 390 saved to `~/praesidium/var/evidence/qsh/<task-id>/`
+  and listed by path in the completion comment. (`wrkq attach put` is
+  unavailable until the daemon gets `WRKQ_ATTACH_DIR`; do not block on it.)
 
 ## 10. What not to do
 
