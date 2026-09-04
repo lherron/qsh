@@ -49,7 +49,7 @@ function Step({
       >
         {n}
       </span>
-      <div className="flex min-w-0 flex-col gap-4">
+      <div className="min-w-0">
         <h3 className="text-base font-semibold text-paper">
           <span className="sr-only">{`Step ${n} `}</span>
           {title}
@@ -64,13 +64,14 @@ export function Install() {
   return (
     <Section path="install" title="Install it, then tell your agent.">
       <TermScrollStyle />
-      <div className="pt-10">
+
+      <div className="mt-10">
         <InstallTabs size="section" />
       </div>
 
       <div className="mt-16 flex flex-col gap-10 border-t border-rule pt-12">
         <Step n="1." title="Initialize the ledger in your repo">
-          <div className="max-w-xl">
+          <div className="mt-4 max-w-xl">
             <Terminal bodyClassName={TERM_SCROLL}>
               <TermBody>
                 <TermLine prompt>
@@ -87,35 +88,43 @@ export function Install() {
         <div className="border-t border-rule" />
 
         <Step n="2." title="Add the hook to your agent's startup">
-          <p className="max-w-[62ch] text-paper-muted">
+          <p className="mt-4 max-w-[62ch] text-paper-muted">
             Claude Code, Codex, opencode, pi and most harnesses run a shell hook
             at session start. Put this in it:
           </p>
-          <div className="max-w-xl border border-rule bg-ink-2">
+          <div className="mt-4 max-w-xl border border-rule bg-ink-2">
             <div className="flex items-center gap-4 px-4 py-3">
               <pre
                 className={`terminal-body m-0 min-w-0 flex-1 overflow-x-auto ${TERM_SCROLL}`}
               >
-                <code className="whitespace-pre text-paper">
-                  {HOOK}
-                </code>
+                <code className="whitespace-pre text-paper">{HOOK}</code>
               </pre>
               <CopyButton value={HOOK} />
             </div>
           </div>
-          <p className="max-w-[62ch] text-paper-muted">
+          <p className="mt-4 max-w-[62ch] text-paper-muted">
             <Cmd>wrkq info</Cmd> prints the task lifecycle rules and the command
             reference an agent needs. Nothing else to configure.
           </p>
         </Step>
       </div>
 
-      <div className={`mt-16 overflow-x-auto border-t border-rule pt-12 ${TERM_SCROLL}`}>
-        <table className="w-full border-collapse text-left">
-          <caption className="mb-6 text-left font-mono text-sm font-medium text-paper">
+      {/*
+        A real table, and it stays one on desktop. Below 768px the rows stack —
+        command on its own line, description beneath — so the description is
+        never scrolled off-screen (DESIGN.md § install). The whole table drops
+        to block layout there: a `display: table` box cannot go narrower than
+        its min-content, and Chrome does not let a scroll container inside an
+        anonymous table cell shrink, so leaving it a table pushed it 36px past
+        the page gutter at 360. The command keeps `whitespace-nowrap` and
+        scrolls inside its own cell rather than wrapping.
+      */}
+      <div className="mt-16 border-t border-rule pt-12">
+        <table className="w-full border-collapse text-left max-md:block">
+          <caption className="mb-6 text-left font-mono text-sm font-medium text-paper max-md:block">
             First five commands
           </caption>
-          <thead>
+          <thead className="max-md:hidden">
             <tr className="border-b border-rule">
               <th
                 scope="col"
@@ -131,16 +140,18 @@ export function Install() {
               </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="max-md:block">
             {FIRST_FIVE.map((row) => (
               <tr
                 key={row.command}
-                className="border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3"
+                className="border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3 max-md:block max-md:py-3.5"
               >
-                <td className="terminal-body py-3.5 pr-10 font-mono whitespace-nowrap text-paper">
+                <td
+                  className={`terminal-body py-3.5 pr-10 whitespace-nowrap text-paper max-md:block max-md:overflow-x-auto max-md:py-0 max-md:pr-0 ${TERM_SCROLL}`}
+                >
                   {row.command}
                 </td>
-                <td className="w-full py-3.5 text-sm whitespace-nowrap text-paper-muted">
+                <td className="w-full py-3.5 text-sm whitespace-nowrap text-paper-muted max-md:block max-md:py-0 max-md:pt-1.5">
                   {row.does}
                 </td>
               </tr>

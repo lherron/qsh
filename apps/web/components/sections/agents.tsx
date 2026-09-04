@@ -57,14 +57,14 @@ export function Agents() {
   return (
     <Section path="agents" title="Built to be read by something that isn't you.">
       <TermScrollStyle />
-      <div className="grid grid-cols-1 items-start gap-x-14 gap-y-12 pt-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+      <div className="mt-10 grid grid-cols-1 items-start gap-x-14 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div>
           <p className="max-w-[62ch] text-paper-muted">
             Agents don&rsquo;t browse. They run a command, parse the result and
             run the next one. wrkq was designed from that side of the screen.
           </p>
 
-          <dl className="pt-10">
+          <dl className="mt-10">
             {CLAIMS.map((claim) => (
               <div
                 key={claim.lead}
