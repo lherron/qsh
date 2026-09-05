@@ -130,11 +130,11 @@ export function CommandEntry({
     <section
       id={command.slug}
       aria-labelledby={headingId}
-      className="scroll-mt-28 border-t border-rule pt-10 pb-2 first:border-t-0 first:pt-0"
+      className="scroll-mt-(--anchor-gap) border-t border-rule pt-10 pb-2 first:border-t-0 first:pt-0"
     >
       {/* An alias with no help file of its own still needs its anchor. */}
       {aliasAnchors[command.name]?.map((alias) => (
-        <span key={alias} id={alias} className="block scroll-mt-28" />
+        <span key={alias} id={alias} className="block scroll-mt-(--anchor-gap)" />
       ))}
 
       <div className="flex flex-wrap items-baseline justify-between gap-x-8 gap-y-1">
@@ -164,7 +164,7 @@ export function CommandEntry({
               key={sub.slug}
               id={sub.slug}
               aria-labelledby={`${sub.slug}-title`}
-              className="scroll-mt-28"
+              className="scroll-mt-(--anchor-gap)"
             >
               <h3
                 id={`${sub.slug}-title`}

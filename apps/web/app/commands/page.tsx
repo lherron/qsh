@@ -60,7 +60,7 @@ export default function CommandsPage() {
             <section
               aria-labelledby="global-flags-title"
               id="global-flags"
-              className="mt-16 scroll-mt-28"
+              className="mt-16 scroll-mt-(--anchor-gap)"
             >
               <h2
                 id="global-flags-title"
@@ -87,7 +87,7 @@ export default function CommandsPage() {
                 key={group.name}
                 id={`group-${group.name}`}
                 data-section-path={group.name}
-                className="mt-20 scroll-mt-28"
+                className="mt-20 scroll-mt-(--anchor-gap)"
               >
                 <p className="flex items-center gap-4 font-mono text-xs text-paper-faint">
                   <span>

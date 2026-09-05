@@ -26,7 +26,7 @@ export function Section({
       id={anchor}
       aria-labelledby={headingId}
       data-section-path={path}
-      className="scroll-mt-24"
+      className="scroll-mt-[calc(var(--anchor-gap)-var(--section-pad))]"
     >
       <div className="mx-auto grid max-w-(--container-page) grid-cols-1 px-(--page-gutter) lg:grid-cols-[var(--tree-gutter)_1fr]">
         <div className="pt-(--section-pad) pb-4 lg:border-r lg:border-rule lg:pb-(--section-pad)">

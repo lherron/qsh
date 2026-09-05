@@ -32,6 +32,10 @@
   --tree-gutter: 200px;
   --tree-gap: clamp(2rem, 4vw, 3.5rem);
   --nav-h: 3.75rem;
+  /* Gap between the sticky nav's scroll-padding and the heading an anchor
+     jump is meant to land on. Sections add the negative of their own top
+     padding on top of it, so every heading lands at the same height. */
+  --anchor-gap: 1rem;
 }
 
 /* Type scale (DESIGN.md § 3), owned by Tailwind so the utilities exist. */
