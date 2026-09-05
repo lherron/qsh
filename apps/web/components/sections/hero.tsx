@@ -1,3 +1,4 @@
+import { LedgerReplay } from "@/components/ledger/replay";
 import { InstallTabs } from "@/components/site/install-tabs";
 
 export function Hero() {
@@ -20,7 +21,7 @@ export function Hero() {
           <span className="block">for humans and agents.</span>
         </h1>
 
-        <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:mt-20 lg:grid-cols-[7fr_5fr] lg:gap-16">
+        <div className="mt-14 grid grid-cols-1 items-start gap-12 lg:mt-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16">
           <div>
             <p className="max-w-[46ch] text-paper-muted">
               wrkq is a task ledger that lives next to your code. Unix verbs, one
@@ -43,11 +44,10 @@ export function Hero() {
             </p>
           </div>
 
-          {/* The ledger replay lands here (DESIGN.md § 5). */}
-          <aside
-            aria-label="Ledger replay"
-            className="min-h-[26rem] border border-rule bg-ink-2"
-          />
+          {/* The ledger replay (DESIGN.md § 5). */}
+          <aside aria-label="Ledger replay">
+            <LedgerReplay />
+          </aside>
         </div>
       </div>
     </section>

@@ -1,7 +1,10 @@
 #!/usr/bin/env node
 // Screenshot a page of the running site at both review viewports.
 //
-//   pnpm shot [path=/] [--out dir]
+//   pnpm shot [path=/] [--out dir] [--reduced]
+//
+// --reduced emulates prefers-reduced-motion: reduce and suffixes the files
+// -reduced (added for T-08037's reduced-motion evidence).
 //
 // Expects a dev or prod server already listening on http://localhost:3000.
 // Writes shots/<slug>-1440.png and shots/<slug>-390.png (full page).
@@ -20,6 +23,7 @@ const VIEWPORTS = [
 function parseArgs(argv) {
   let target = "/";
   let out = "shots";
+  let reduced = false;
   let sawTarget = false;
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
@@ -27,13 +31,15 @@ function parseArgs(argv) {
       out = argv[++i] ?? out;
     } else if (arg.startsWith("--out=")) {
       out = arg.slice("--out=".length);
+    } else if (arg === "--reduced") {
+      reduced = true;
     } else if (!sawTarget) {
       target = arg;
       sawTarget = true;
     }
   }
   if (!target.startsWith("/")) target = `/${target}`;
-  return { target, out };
+  return { target, out, reduced };
 }
 
 function slugFor(target) {
@@ -41,7 +47,7 @@ function slugFor(target) {
   return trimmed === "" ? "home" : trimmed.replace(/\//g, "-");
 }
 
-const { target, out } = parseArgs(process.argv.slice(2));
+const { target, out, reduced } = parseArgs(process.argv.slice(2));
 const slug = slugFor(target);
 const outDir = path.resolve(ROOT, out);
 await mkdir(outDir, { recursive: true });
@@ -51,13 +57,15 @@ try {
   for (const viewport of VIEWPORTS) {
     const context = await browser.newContext({ viewport, deviceScaleFactor: 2 });
     const page = await context.newPage();
+    if (reduced) await page.emulateMedia({ reducedMotion: "reduce" });
     const url = `${ORIGIN}${target}`;
     const response = await page.goto(url, { waitUntil: "networkidle" });
     if (!response || !response.ok()) {
       throw new Error(`${url} returned ${response ? response.status() : "no response"}`);
     }
     await page.evaluate(() => document.fonts.ready);
-    const file = path.join(outDir, `${slug}-${viewport.width}.png`);
+    const suffix = reduced ? "-reduced" : "";
+    const file = path.join(outDir, `${slug}-${viewport.width}${suffix}.png`);
     await page.screenshot({ path: file, fullPage: true });
     await context.close();
     console.log(path.relative(ROOT, file));
