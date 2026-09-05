@@ -1,9 +1,11 @@
 import type { ReactNode } from "react";
 
 /**
- * Opts a command pane into the visible 6px scrollbar defined in
- * `app/globals.css`. Every pane that can overflow its box carries it, so a cut
- * line always says "scroll me" rather than reading as a rendering bug.
+ * Opts a command pane into the 6px scrollbar styling in `app/globals.css`.
+ * Carried by the panes that hold real terminal transcripts, where wrapping
+ * would break the column alignment the output depends on; panes that hold one
+ * copyable command wrap instead, because on macOS the bar is an overlay and a
+ * cut line has nothing to say it can scroll.
  */
 export const TERM_SCROLL = "term-scroll";
 

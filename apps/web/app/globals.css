@@ -181,12 +181,12 @@
   }
 }
 
-/* Command panes keep a permanently visible 6px scrollbar rather than an
-   overlay one: a line that is silently cut reads as a bug. ::-webkit-scrollbar
-   cannot be written as a utility, and styling it is what opts a scroll
-   container out of overlay scrollbars in the first place. The standard
+/* Command panes that can overflow their box. Where the platform draws a
+   classic scrollbar these give it the site's colours instead of the browser's;
+   on macOS the bar is an overlay and reserves no space, which is why no pane
+   that holds a single copyable command relies on it — those wrap. The standard
    `scrollbar-width`/`scrollbar-color` pair is deliberately absent: setting
-   either makes Chrome ignore these rules and fall back to the overlay bar. */
+   either makes Chrome ignore these rules entirely. */
 .term-scroll::-webkit-scrollbar {
   height: 6px;
   width: 6px;

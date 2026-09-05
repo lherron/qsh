@@ -143,8 +143,13 @@ export function Install() {
                 key={row.command}
                 className="border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3 max-md:block max-md:py-3.5"
               >
+                {/* Below md the command runs to the page edge rather than
+                    stopping at the gutter: at 390 the longest of the five was
+                    6px over and lost its closing quote, which reads as a typo
+                    rather than as something to scroll. Same bleed the states
+                    strip uses. */}
                 <td
-                  className={`terminal-body py-3.5 pr-10 whitespace-nowrap text-paper max-md:block max-md:overflow-x-auto max-md:py-0 max-md:pr-0 ${TERM_SCROLL}`}
+                  className={`terminal-body py-3.5 pr-10 whitespace-nowrap text-paper max-md:-mr-(--page-gutter) max-md:block max-md:overflow-x-auto max-md:py-0 max-md:pr-0 ${TERM_SCROLL}`}
                 >
                   {row.command}
                 </td>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useSyncExternalStore } from "react";
+import { useId, useRef, useSyncExternalStore } from "react";
 import { CopyButton } from "./copy-button";
 
 // Verified against ~/praesidium/wrkq/README.md, install.sh and go.mod.
@@ -75,6 +75,10 @@ function selectTab(id: TabId) {
 export function InstallTabs({ size = "section" }: { size?: "hero" | "section" }) {
   const active = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
   const tabRefs = useRef(new Map<TabId, HTMLButtonElement>());
+  // The landing page renders this twice — the hero and § install — so the tab
+  // and panel ids have to be unique per instance or `aria-controls` and
+  // `aria-labelledby` point at whichever copy the browser found first.
+  const ids = useId();
 
   const onKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     const keys: Record<string, number> = {
@@ -119,9 +123,9 @@ export function InstallTabs({ size = "section" }: { size?: "hero" | "section" })
               }}
               type="button"
               role="tab"
-              id={`install-tab-${tab.id}`}
+              id={`${ids}-tab-${tab.id}`}
               aria-selected={selected}
-              aria-controls={`install-panel-${tab.id}`}
+              aria-controls={`${ids}-panel-${tab.id}`}
               tabIndex={selected ? 0 : -1}
               onClick={() => selectTab(tab.id)}
               className={[
@@ -139,14 +143,18 @@ export function InstallTabs({ size = "section" }: { size?: "hero" | "section" })
 
       <div
         role="tabpanel"
-        id={`install-panel-${current.id}`}
-        aria-labelledby={`install-tab-${current.id}`}
+        id={`${ids}-panel-${current.id}`}
+        aria-labelledby={`${ids}-tab-${current.id}`}
         tabIndex={0}
         className="border border-t-0 border-rule bg-ink-2"
       >
         <div className="flex items-center gap-4 px-4 py-3">
-          <pre className="term-scroll terminal-body m-0 min-w-0 flex-1 overflow-x-auto">
-            <code className="whitespace-pre">
+          {/* The install command is what the whole page is asking the reader
+              to run, so it wraps with a 2ch hanging indent instead of being
+              cut at the copy button. At 390 the brew line lost everything past
+              `&& b`, and an overflowing pane reserves no scrollbar to say so. */}
+          <pre className="terminal-body m-0 min-w-0 flex-1 pl-[2ch] -indent-[2ch]">
+            <code className="whitespace-pre-wrap">
               <span className="text-paper-faint select-none">$ </span>
               <span className="text-paper">{current.command}</span>
             </code>
