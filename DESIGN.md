@@ -47,7 +47,7 @@ are a defect.
 | `--ink-3` | `#221f1b` | hover surfaces, table row highlight |
 | `--paper` | `#e7e2d8` | primary text |
 | `--paper-muted` | `#a39d91` | secondary text, captions |
-| `--paper-faint` | `#6e695f` | tertiary text, disabled, prompt glyphs |
+| `--paper-faint` | `#8a8478` | tertiary text, disabled, prompt glyphs. Amended after T-08037: `#6e695f` measured 3.3:1 on `--ink-2` and failed AA; the new value must measure ≥ 4.5:1 on `--ink-2`, and T-08041 adjusts to the darkest passing value. |
 | `--rule` | `rgba(231,226,216,0.10)` | hairlines, borders |
 | `--rule-strong` | `rgba(231,226,216,0.22)` | focused borders, active tabs |
 | `--signal` | `#ffcb45` | the one accent: `in_progress`, active path, links on hover, cursor |
@@ -146,8 +146,10 @@ that updates after each command. The replay:
 4. `$ wrkq set T-00042 --state completed --as agent:cody`
    → dot turns `--done`, meta reads `completed · P3 · bug · api`
 5. `$ wrkq monitor wait T-00042 --until state=completed`
-   → prints `T-00042 completed` and exits 0 — the human's side was waiting
-   the whole time.
+   → prints its real terminal line,
+   `{"type":"wrkq.monitor.terminal","result":"met","reason":"condition_met","unmet":[]}`,
+   and exits 0 — the human's side was waiting the whole time. (Amended after
+   T-08037: `monitor wait` emits NDJSON in every output mode.)
 
 Typing speed 28–40ms per character with slight jitter, 600ms pause after
 Enter, 1.4s hold on each result. After step 5 hold 4s, fade the shell, reset,
@@ -246,8 +248,9 @@ claims and state flips are attributed and appended to an event log you can
 tail. When two agents touch the same task, `claim` makes the winner explicit."
 ```
 $ wrkq claim T-00042 --as agent:cody
-claimed T-00042 · holder agent:cody · generation 1
+Claimed T-00042 as agent:cody on macbook (generation 1)
 ```
+(Real stdout shape from `internal/rpccli/claim.go`; amended after T-08037.)
 
 ### / install
 
