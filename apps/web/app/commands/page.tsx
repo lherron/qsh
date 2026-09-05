@@ -31,7 +31,7 @@ export default function CommandsPage() {
   return (
     <>
       <Nav />
-      <main>
+      <main id="main">
         <div className="mx-auto grid max-w-(--container-page) grid-cols-1 px-(--page-gutter) lg:grid-cols-[var(--tree-gutter)_minmax(0,1fr)]">
           <div className="pt-12 pb-8 lg:border-r lg:border-rule lg:pt-20 lg:pb-32">
             {/* Only labels and anchors cross to the client, not the commands. */}

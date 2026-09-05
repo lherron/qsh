@@ -4,6 +4,7 @@ import {
   IBM_Plex_Sans,
   JetBrains_Mono,
 } from "next/font/google";
+import { SkipLink } from "@/components/site/skip-link";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -71,7 +72,10 @@ export default function RootLayout({
       lang="en"
       className={`dark ${bricolage.variable} ${plexSans.variable} ${jetbrainsMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <SkipLink />
+        {children}
+      </body>
     </html>
   );
 }
