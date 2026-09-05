@@ -13,7 +13,11 @@
   --ink-3: #221f1b;
   --paper: #e7e2d8;
   --paper-muted: #a39d91;
-  --paper-faint: #6e695f;
+  /* Darkest value on the token's own hue ramp that clears WCAG AA for
+     body-size text: 4.52:1 on --ink-2 and 4.77:1 on --ink. DESIGN.md § 3
+     proposed #8a8478 (4.86:1) and asked T-08041 to take it as dark as AA
+     allows. Not used as text on --ink-3, where it would measure 4.11:1. */
+  --paper-faint: #847f73;
   --rule: rgba(231, 226, 216, 0.1);
   --rule-strong: rgba(231, 226, 216, 0.22);
   --signal: #ffcb45;

@@ -47,7 +47,7 @@ are a defect.
 | `--ink-3` | `#221f1b` | hover surfaces, table row highlight |
 | `--paper` | `#e7e2d8` | primary text |
 | `--paper-muted` | `#a39d91` | secondary text, captions |
-| `--paper-faint` | `#8a8478` | tertiary text, disabled, prompt glyphs. Amended after T-08037: `#6e695f` measured 3.3:1 on `--ink-2` and failed AA; the new value must measure ≥ 4.5:1 on `--ink-2`, and T-08041 adjusts to the darkest passing value. |
+| `--paper-faint` | `#847f73` | tertiary text, disabled, prompt glyphs. Amended after T-08037: `#6e695f` measured 3.3:1 on `--ink-2` and failed AA. T-08041 took it to the darkest passing value on the token's own hue ramp: 4.52:1 on `--ink-2`, 4.77:1 on `--ink`. It is not used as text on `--ink-3`, where it measures 4.11:1. |
 | `--rule` | `rgba(231,226,216,0.10)` | hairlines, borders |
 | `--rule-strong` | `rgba(231,226,216,0.22)` | focused borders, active tabs |
 | `--signal` | `#ffcb45` | the one accent: `in_progress`, active path, links on hover, cursor |
