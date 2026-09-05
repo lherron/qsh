@@ -181,6 +181,25 @@
   }
 }
 
+/* Command panes keep a permanently visible 6px scrollbar rather than an
+   overlay one: a line that is silently cut reads as a bug. ::-webkit-scrollbar
+   cannot be written as a utility, and styling it is what opts a scroll
+   container out of overlay scrollbars in the first place. The standard
+   `scrollbar-width`/`scrollbar-color` pair is deliberately absent: setting
+   either makes Chrome ignore these rules and fall back to the overlay bar. */
+.term-scroll::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+.term-scroll::-webkit-scrollbar-track {
+  background: var(--ink-3);
+}
+
+.term-scroll::-webkit-scrollbar-thumb {
+  background: var(--paper-faint);
+}
+
 @layer components {
   /* The wordmark device: heavy w/r/k/q against light everything else.
      DESIGN.md § 6 allows it exactly twice — the hero H1 and the footer tagline. */

@@ -1,30 +1,11 @@
 import type { ReactNode } from "react";
 
 /**
- * The `/ why` columns are ~200px of usable width, so most proving commands are
- * longer than their pane. DESIGN.md § 9 allows a terminal its own overflow-x,
- * but a line that is silently cut reads as a bug, so these panes keep a
- * permanently visible 6px scrollbar: --paper-faint thumb on an --ink-3 track.
- *
- * The rules live in a style element rather than Tailwind utilities because
- * ::-webkit-scrollbar cannot be expressed as one, and styling it is what opts
- * a scroll container out of overlay scrollbars in the first place. The
- * standard `scrollbar-width`/`scrollbar-color` pair is deliberately absent:
- * setting either makes Chrome ignore the ::-webkit-scrollbar rules and fall
- * back to an overlay bar that appears only while scrolling. Scoped to the
- * class below, so it touches nothing outside these sections.
+ * Opts a command pane into the visible 6px scrollbar defined in
+ * `app/globals.css`. Every pane that can overflow its box carries it, so a cut
+ * line always says "scroll me" rather than reading as a rendering bug.
  */
 export const TERM_SCROLL = "term-scroll";
-
-export function TermScrollStyle() {
-  return (
-    <style>{`
-      .term-scroll::-webkit-scrollbar { height: 6px; width: 6px; }
-      .term-scroll::-webkit-scrollbar-track { background: var(--ink-3); }
-      .term-scroll::-webkit-scrollbar-thumb { background: var(--paper-faint); }
-    `}</style>
-  );
-}
 
 export function TermBody({ children }: { children: ReactNode }) {
   return (

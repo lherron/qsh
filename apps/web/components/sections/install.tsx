@@ -4,7 +4,6 @@ import {
   TERM_SCROLL,
   TermBody,
   TermLine,
-  TermScrollStyle,
 } from "@/components/sections/parts/term";
 import { CopyButton } from "@/components/site/copy-button";
 import { InstallTabs } from "@/components/site/install-tabs";
@@ -63,15 +62,13 @@ function Step({
 export function Install() {
   return (
     <Section path="install" title="Install it, then tell your agent.">
-      <TermScrollStyle />
-
       <div className="mt-10">
         <InstallTabs size="section" />
       </div>
 
       <div className="mt-16 flex flex-col gap-10 border-t border-rule pt-12">
         <Step n="1." title="Initialize the ledger in your repo">
-          <div className="mt-4 max-w-xl">
+          <div className="mt-4">
             <Terminal bodyClassName={TERM_SCROLL}>
               <TermBody>
                 <TermLine prompt>
@@ -92,12 +89,12 @@ export function Install() {
             Claude Code, Codex, opencode, pi and most harnesses run a shell hook
             at session start. Put this in it:
           </p>
-          <div className="mt-4 max-w-xl border border-rule bg-ink-2">
+          {/* The one line the whole page is asking the reader to copy, so it
+              wraps rather than scrolling under the copy button. */}
+          <div className="mt-4 border border-rule bg-ink-2">
             <div className="flex items-center gap-4 px-4 py-3">
-              <pre
-                className={`terminal-body m-0 min-w-0 flex-1 overflow-x-auto ${TERM_SCROLL}`}
-              >
-                <code className="whitespace-pre text-paper">{HOOK}</code>
+              <pre className="terminal-body m-0 min-w-0 flex-1 pl-[2ch] -indent-[2ch]">
+                <code className="whitespace-pre-wrap text-paper">{HOOK}</code>
               </pre>
               <CopyButton value={HOOK} />
             </div>

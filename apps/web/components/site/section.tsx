@@ -30,7 +30,10 @@ export function Section({
     >
       <div className="mx-auto grid max-w-(--container-page) grid-cols-1 px-(--page-gutter) lg:grid-cols-[var(--tree-gutter)_1fr]">
         <div className="pt-(--section-pad) pb-4 lg:border-r lg:border-rule lg:pb-(--section-pad)">
-          <p className="lg:sticky lg:top-24">
+          {/* 12px is the measured gap between the mono eyebrow's baseline and
+              the 36px display heading's baseline when both start at the
+              section's top padding; adding it here puts them on one line. */}
+          <p className="lg:sticky lg:top-24 lg:pt-3">
             <span
               data-path-for={path}
               className="font-mono text-xs text-paper-faint transition-colors duration-[120ms] data-[active=true]:text-signal"

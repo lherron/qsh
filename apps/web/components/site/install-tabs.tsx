@@ -101,7 +101,7 @@ export function InstallTabs({ size = "section" }: { size?: "hero" | "section" })
   const current = TABS.find((tab) => tab.id === active) ?? TABS[0];
 
   return (
-    <div className={size === "hero" ? "max-w-xl" : "max-w-3xl"}>
+    <div className={size === "hero" ? "max-w-xl" : undefined}>
       <div
         role="tablist"
         aria-label="Install wrkq"
@@ -145,7 +145,7 @@ export function InstallTabs({ size = "section" }: { size?: "hero" | "section" })
         className="border border-t-0 border-rule bg-ink-2"
       >
         <div className="flex items-center gap-4 px-4 py-3">
-          <pre className="terminal-body m-0 min-w-0 flex-1 overflow-x-auto">
+          <pre className="term-scroll terminal-body m-0 min-w-0 flex-1 overflow-x-auto">
             <code className="whitespace-pre">
               <span className="text-paper-faint select-none">$ </span>
               <span className="text-paper">{current.command}</span>

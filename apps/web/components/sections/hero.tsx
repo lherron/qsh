@@ -5,7 +5,7 @@ export function Hero() {
   return (
     <section aria-labelledby="hero-title" className="relative isolate overflow-hidden">
       <div className="hero-grid" aria-hidden="true" />
-      <div className="mx-auto max-w-(--container-page) px-(--page-gutter) pt-20 pb-(--section-pad) lg:pt-28">
+      <div className="mx-auto max-w-(--container-page) px-(--page-gutter) pt-[calc(var(--nav-h)+var(--anchor-gap)*2.5)] pb-(--section-pad) lg:pt-28">
         <p className="font-mono text-xs text-paper-faint">
           local-first · sqlite · mit
         </p>

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Cmd, TERM_SCROLL, TermScrollStyle } from "@/components/sections/parts/term";
+import { Cmd, TERM_SCROLL } from "@/components/sections/parts/term";
 import { WRKQ_INFO } from "@/components/sections/parts/wrkq-info";
 import { Section } from "@/components/site/section";
 import { Terminal } from "@/components/site/terminal";
@@ -56,7 +56,6 @@ const CLAIMS: { lead: string; body: ReactNode; command: string }[] = [
 export function Agents() {
   return (
     <Section path="agents" title="Built to be read by something that isn't you.">
-      <TermScrollStyle />
       <div className="mt-10 grid grid-cols-1 items-start gap-x-14 gap-y-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         <div>
           <p className="max-w-[62ch] text-paper-muted">
@@ -72,11 +71,17 @@ export function Agents() {
               >
                 <dt className="font-semibold text-paper">{claim.lead}</dt>
                 <dd className="max-w-[62ch] text-paper-muted">{claim.body}</dd>
+                {/* These three commands are the point of the section, so none
+                    of them may be cut. The column is ~415px at 1440 and the
+                    monitor-wait line needs ~550px, so it wraps with a 2ch
+                    hanging indent — the continuation sits under the command,
+                    where a shell puts it — and the whole command is readable
+                    at every width. Widening the column instead (mable's other
+                    option on T-08041) would have starved the `wrkq info`
+                    specimen next to it down to ~305px. */}
                 <dd className="border border-rule bg-ink-2 px-4 py-2.5">
-                  <pre
-                    className={`terminal-body m-0 overflow-x-auto ${TERM_SCROLL}`}
-                  >
-                    <code className="whitespace-pre">
+                  <pre className="terminal-body m-0 pl-[2ch] -indent-[2ch]">
+                    <code className="whitespace-pre-wrap">
                       <span className="text-paper-faint select-none">$ </span>
                       <span className="text-paper">{claim.command}</span>
                     </code>
