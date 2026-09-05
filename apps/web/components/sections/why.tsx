@@ -5,7 +5,6 @@ import {
   TERM_SCROLL,
   TermBody,
   TermLine,
-  TermScrollStyle,
 } from "@/components/sections/parts/term";
 import { Section } from "@/components/site/section";
 import { Terminal } from "@/components/site/terminal";
@@ -102,10 +101,10 @@ const CLAIMS: {
           <span className="text-paper">wrkq claim T-00042 --as agent:cody</span>
         </TermLine>
         <TermLine>
-          <span className="text-paper-muted">claimed </span>
+          <span className="text-paper-muted">Claimed </span>
           <span className="text-paper">T-00042</span>
           <span className="text-paper-muted">
-            {" · holder agent:cody · generation 1"}
+            {" as agent:cody on macbook (generation 1)"}
           </span>
         </TermLine>
       </>
@@ -116,8 +115,6 @@ const CLAIMS: {
 export function Why() {
   return (
     <Section path="why" title="Three things it gets right.">
-      <TermScrollStyle />
-
       {/* The grid is pulled 24px past the content column on both sides so
           every column can carry the same padding — equal content widths, and
           the outer edges still line up with the heading. The columns' left

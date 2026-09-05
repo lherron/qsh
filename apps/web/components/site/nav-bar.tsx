@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { DOCS_URL, REPO_URL, formatStars } from "@/lib/links";
+import { DOCS_URL, REPO_URL, STAR_FLOOR, formatStars } from "@/lib/links";
 
 export function NavBar({
   version,
@@ -60,7 +60,7 @@ export function NavBar({
             className="text-paper-muted transition-colors duration-[120ms] hover:text-signal"
           >
             github <span aria-hidden="true">↗</span>
-            {stars !== null && (
+            {stars !== null && stars >= STAR_FLOOR && (
               <span className="ml-2 text-paper-faint">{formatStars(stars)}</span>
             )}
           </a>
