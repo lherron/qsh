@@ -23,6 +23,7 @@
  */
 import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
+import { GROUPS } from "./commands.ts";
 
 export type HelpFlag = {
   /** Single-letter form without the dash: `a` for `-a`. */
@@ -69,71 +70,14 @@ export type CommandGroup = {
 };
 
 /**
- * The six groups of DESIGN.md § 6 `/ commands`, duplicated here because
- * `lib/commands.ts` (the landing grid) lands on another branch. Every anchor
- * the landing grid emits — `#<member>` — resolves on `/commands`.
+ * The `/commands` index, derived from the landing grid's grouping so the six
+ * groups are defined exactly once (`lib/commands.ts`). Every anchor the landing
+ * grid emits — `#<member>` — resolves on this page.
  */
-export const COMMAND_GROUPS: CommandGroup[] = [
-  {
-    name: "files",
-    members: [
-      "ls",
-      "tree",
-      "cat",
-      "stat",
-      "touch",
-      "mkdir",
-      "mv",
-      "cp",
-      "rm",
-      "rmdir",
-      "restore",
-      "rename-container",
-    ],
-  },
-  {
-    name: "work",
-    members: [
-      "set",
-      "apply",
-      "comment",
-      "attach",
-      "relation",
-      "claim",
-      "release",
-      "ack",
-      "check",
-      "diff",
-    ],
-  },
-  { name: "find", members: ["find", "search", "index", "log", "timeline", "usage"] },
-  { name: "watch", members: ["watch", "monitor", "webhook"] },
-  {
-    name: "agents",
-    members: [
-      "info",
-      "agent-info",
-      "agent-context",
-      "agent",
-      "whoami",
-      "handoff",
-      "promise",
-      "check-inbox",
-    ],
-  },
-  {
-    name: "projects",
-    members: [
-      "projects",
-      "container",
-      "campaign",
-      "server",
-      "rpc",
-      "completion",
-      "version",
-    ],
-  },
-];
+export const COMMAND_GROUPS: CommandGroup[] = GROUPS.map(({ group, names }) => ({
+  name: group,
+  members: names,
+}));
 
 /**
  * Names that are aliases of another command and have no help file of their own.

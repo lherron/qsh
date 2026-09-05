@@ -31,7 +31,13 @@ export type CommandGroup = {
  */
 const HELP_ALIASES: Record<string, string> = { info: "usage" };
 
-const GROUPS: Array<{ group: string; names: string[] }> = [
+/**
+ * The six groups of DESIGN.md § 6 `/ commands`, and the only place they are
+ * written down: `lib/help.ts` derives the `/commands` index from this list so
+ * the landing grid and the reference page can never disagree about membership
+ * or order.
+ */
+export const GROUPS: Array<{ group: string; names: string[] }> = [
   {
     group: "files",
     names: [

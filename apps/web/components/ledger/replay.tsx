@@ -62,7 +62,7 @@ const CARET_CSS = `
 @media (prefers-reduced-motion: reduce) { .ledger-caret { animation: none } }
 `;
 
-export function LedgerReplay({ static: isStatic = false }: { static?: boolean }) {
+export function LedgerReplay() {
   const [frame, setFrame] = useState<Frame>(FIRST);
   const [shellVisible, setShellVisible] = useState(true);
   const [started, setStarted] = useState(false);
@@ -79,7 +79,7 @@ export function LedgerReplay({ static: isStatic = false }: { static?: boolean })
     return () => query.removeEventListener("change", sync);
   }, []);
 
-  const frozen = isStatic || reduced;
+  const frozen = reduced;
 
   useEffect(() => {
     if (frozen) return;
