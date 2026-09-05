@@ -31,36 +31,21 @@ function FlagTable({ flags, command }: { flags: HelpFlag[]; command: string }) {
         <caption className="sr-only">Flags for {command}</caption>
         <thead>
           <tr className="border-b border-rule-strong">
-            <th
-              scope="col"
-              className="py-2 pr-6 font-mono text-2xs font-normal text-paper-faint md:w-60"
-            >
+            <th scope="col" className="flag-head pr-6 md:w-60">
               flag
             </th>
-            <th
-              scope="col"
-              className="hidden py-2 pr-6 font-mono text-2xs font-normal text-paper-faint md:table-cell md:w-24"
-            >
+            <th scope="col" className="flag-head hidden pr-6 md:table-cell md:w-24">
               type
             </th>
-            <th
-              scope="col"
-              className="py-2 font-mono text-2xs font-normal text-paper-faint"
-            >
+            <th scope="col" className="flag-head">
               description
             </th>
           </tr>
         </thead>
         <tbody>
           {flags.map((flag) => (
-            <tr
-              key={flag.long}
-              className="border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3"
-            >
-              <th
-                scope="row"
-                className="py-2 pr-6 align-top font-mono text-xs font-normal whitespace-nowrap text-paper"
-              >
+            <tr key={flag.long} className="flag-row">
+              <th scope="row" className="flag-name">
                 {flag.short && (
                   <span className="text-paper-faint">-{flag.short}, </span>
                 )}
@@ -71,12 +56,8 @@ function FlagTable({ flags, command }: { flags: HelpFlag[]; command: string }) {
                   <span className="text-paper-faint md:hidden"> {flag.type}</span>
                 )}
               </th>
-              <td className="hidden py-2 pr-6 align-top font-mono text-xs whitespace-nowrap text-paper-faint md:table-cell">
-                {flag.type}
-              </td>
-              <td className="py-2 align-top text-sm text-paper-muted">
-                {flag.description}
-              </td>
+              <td className="flag-type">{flag.type}</td>
+              <td className="flag-desc">{flag.description}</td>
             </tr>
           ))}
         </tbody>

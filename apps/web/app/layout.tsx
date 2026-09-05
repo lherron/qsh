@@ -1,17 +1,34 @@
 import type { Metadata } from "next";
-import {
-  Bricolage_Grotesque,
-  IBM_Plex_Sans,
-  JetBrains_Mono,
-} from "next/font/google";
+import { IBM_Plex_Sans, JetBrains_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { SkipLink } from "@/components/site/skip-link";
 import "./globals.css";
 
-const bricolage = Bricolage_Grotesque({
+/**
+ * Bricolage Grotesque, latin, all three axes (opsz 12–96, wght 200–800,
+ * wdth 75–100) — every value DESIGN.md § 3 asks for, unchanged.
+ *
+ * It is served from `app/fonts/` rather than `next/font/google` because
+ * Google's latin instance is 131 KB: 268 glyphs of variable outlines for
+ * eleven words of display type, and the single reason the landing page could
+ * not reach the § 9 floor of Lighthouse performance 95 (measured: it is worth
+ * ~450 ms of simulated LCP on its own). `scripts/subset-display-font.sh`
+ * regenerates this file from that same Google instance, cut to printable
+ * latin plus the typographic marks the copy uses — 77 KB, 111 glyphs, kerning
+ * and every axis intact, and byte-identical rendering for every character the
+ * site sets in this face.
+ */
+const bricolage = localFont({
+  src: "./fonts/bricolage-grotesque-latin.woff2",
   variable: "--font-bricolage",
-  subsets: ["latin"],
   display: "swap",
-  axes: ["opsz", "wdth"],
+  weight: "200 800",
+  style: "normal",
+  declarations: [{ prop: "font-stretch", value: "75% 100%" }],
+  // The google loader generated a metric-matched Arial fallback for this face;
+  // keep it so the swap does not shift the H1.
+  adjustFontFallback: "Arial",
+  fallback: ["Helvetica Neue", "system-ui", "sans-serif"],
 });
 
 const plexSans = IBM_Plex_Sans({
@@ -21,11 +38,13 @@ const plexSans = IBM_Plex_Sans({
   weight: ["400", "500", "600"],
 });
 
+// DESIGN.md § 3 lists mono at 400/500/700, but nothing on either page renders
+// mono at 700, so that face is not built or served.
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
   subsets: ["latin"],
   display: "swap",
-  weight: ["400", "500", "700"],
+  weight: ["400", "500"],
 });
 
 export const metadata: Metadata = {

@@ -61,7 +61,14 @@ grid is the only atmospheric effect on the page.
 
 ### Type
 
-Loaded through `next/font/google`, `display: swap`, subsets `latin`.
+Loaded through `next/font`, `display: swap`, subsets `latin`. The body and
+mono faces come from `next/font/google`. The display face is served from
+`apps/web/app/fonts/` instead (`next/font/local`), because Google's latin
+instance ships 268 glyphs of three-axis variable outlines — 131 KB — to set
+eleven words, and it was the only thing keeping the landing page under the
+§ 9 Lighthouse floor. `scripts/subset-display-font.sh` cuts that same file to
+printable latin: 77 KB, every axis and kerning intact, and an H1 that renders
+byte for byte identically (screenshot-diffed on T-08041). Amended after T-08041.
 
 | role | face | notes |
 | --- | --- | --- |

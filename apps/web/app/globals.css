@@ -201,6 +201,30 @@
 }
 
 @layer components {
+  /* The `/commands` flag tables repeat one row and four cell shapes across 428
+     rows. As utility strings that was 188KB of the page's markup, and the RSC
+     payload carries every byte again; named once here they cost one token per
+     cell. Nothing outside those tables uses them. */
+  .flag-head {
+    @apply py-2 font-mono text-2xs font-normal text-paper-faint;
+  }
+
+  .flag-row {
+    @apply border-b border-rule transition-colors duration-[120ms] hover:bg-ink-3;
+  }
+
+  .flag-name {
+    @apply py-2 pr-6 align-top font-mono text-xs font-normal whitespace-nowrap text-paper;
+  }
+
+  .flag-type {
+    @apply hidden py-2 pr-6 align-top font-mono text-xs whitespace-nowrap text-paper-faint md:table-cell;
+  }
+
+  .flag-desc {
+    @apply py-2 align-top text-sm text-paper-muted;
+  }
+
   /* The wordmark device: heavy w/r/k/q against light everything else.
      DESIGN.md § 6 allows it exactly twice — the hero H1 and the footer tagline. */
   .wq-device {
