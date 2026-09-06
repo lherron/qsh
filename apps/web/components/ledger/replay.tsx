@@ -158,6 +158,7 @@ export function LedgerReplay() {
         <div className="grid grid-cols-1 items-end">
           {SCRIPT.map((candidate, index) => {
             const current = index === shown.cmd;
+            const typing = current && !frozen && started;
             return (
               <p
                 key={candidate.command}
@@ -166,44 +167,41 @@ export function LedgerReplay() {
                 aria-hidden={current ? undefined : "true"}
               >
                 <span className="text-paper-faint select-none">$ </span>
-                {current && !frozen && started ? (
-                  <>
-                    {/* Assistive tech gets the whole command at once; the
-                        glyph-by-glyph version below is decoration. */}
-                    <span className="sr-only">{candidate.command}</span>
-                    {/* One span per character, each at a position it never
-                        leaves. Typing changes colour only, so nothing in the
-                        strip moves and the loop reports no layout shift. */}
-                    {[...candidate.command].map((glyph, at) => (
-                      <span
-                        key={at}
-                        aria-hidden="true"
-                        className={
-                          at < shown.typed
-                            ? "text-paper"
-                            : at === shown.typed
-                              ? "ledger-caret"
-                              : "invisible"
-                        }
-                      >
-                        {glyph}
-                      </span>
-                    ))}
-                    {/* The cursor rests past the last character once typed. */}
-                    <span
-                      aria-hidden="true"
-                      className={
-                        shown.typed >= candidate.command.length
+                {/* While this line is being typed the glyphs carry state, so
+                    assistive tech gets the command once, up front, instead. */}
+                {typing && <span className="sr-only">{candidate.command}</span>}
+                {/* One span per character, on every line, typed or not. Each
+                    glyph sits at a position it never leaves, so typing changes
+                    colour and nothing else. The structure has to be identical
+                    on the hidden lines too: they size the shared grid row, and
+                    a run of one-character boxes does not wrap where the same
+                    text in a single box would. */}
+                {[...candidate.command].map((glyph, at) => (
+                  <span
+                    key={at}
+                    aria-hidden={typing ? "true" : undefined}
+                    className={
+                      !typing || at < shown.typed
+                        ? "text-paper"
+                        : at === shown.typed
                           ? "ledger-caret"
                           : "invisible"
-                      }
-                    >
-                      &nbsp;
-                    </span>
-                  </>
-                ) : (
-                  <span className="text-paper">{candidate.command}</span>
-                )}
+                    }
+                  >
+                    {glyph}
+                  </span>
+                ))}
+                {/* The cell the cursor rests in once the command is typed. */}
+                <span
+                  aria-hidden="true"
+                  className={
+                    typing && shown.typed >= candidate.command.length
+                      ? "ledger-caret"
+                      : "invisible"
+                  }
+                >
+                  &nbsp;
+                </span>
               </p>
             );
           })}
