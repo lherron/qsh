@@ -53,7 +53,7 @@ export const GROUPS: Array<{ group: string; names: string[] }> = [
     ],
   },
   { group: "find", names: ["find", "search", "index", "log", "timeline", "usage"] },
-  { group: "watch", names: ["watch", "monitor", "webhook"] },
+  { group: "watch", names: ["monitor", "webhook"] },
   {
     group: "agents",
     names: [
